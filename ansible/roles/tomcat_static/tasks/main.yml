@@ -22,7 +22,7 @@
 
 - name: apache site configuration
   copy:
-    src=files/tomcat.apache2.conf
+    src=tomcat.apache2.conf
     dest=/etc/apache2/sites-available/default-tomcat.conf
     owner=root
     group=root
