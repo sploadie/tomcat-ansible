@@ -8,6 +8,16 @@
     - tomcat7
     - apache2
 
+- name: remove default tomcat ROOT
+  file:
+    path=/var/lib/tomcat7/webapps/ROOT
+    state=absent
+
+- name: setup sample.war from tomcat
+  get_url:
+    dest=/var/lib/tomcat7/webapps/ROOT.war
+    url=https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
+
 - name: tomcat running
   service:
     name=tomcat7
