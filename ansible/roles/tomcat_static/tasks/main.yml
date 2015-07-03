@@ -6,9 +6,25 @@
   with_items:
     - openjdk-7-jre-headless
     - tomcat7
+    - apache2
 
 - name: tomcat running
   service:
     name=tomcat7
     state=running
     enabled=yes
+
+- name: apache running
+  service:
+    name=apache2
+    state=running
+    enabled=yes
+
+- name: apache site configuration
+  copy:
+    src=files/tomcat.apache2.conf
+    dest=/etc/apache2/sites-available/default-tomcat.conf
+    owner=root
+    group=root
+    mode=0644
+  notify: enable apache site

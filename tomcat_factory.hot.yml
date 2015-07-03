@@ -14,8 +14,22 @@ parameters:
 
   ansible_playbook:
     type: string
-    label: target playbook path relative to git repository
+    label: Target playbook path relative to git repository
 
+  flavor_name:
+    default: s1.cw.small-1
+    description: Flavor to use for the deployed instance
+    type: string
+    label: Instance Type (Flavor)
+    constraints:
+      - allowed_values:
+          - s1.cw.small-1
+          - n1.cw.standard-1
+          - n1.cw.standard-2
+          - n1.cw.standard-4
+          - n1.cw.standard-8
+          - n1.cw.standard-12
+          - n1.cw.standard-16
 
 resources:
   dmz:
@@ -49,8 +63,8 @@ resources:
     type: OS::Nova::Server
     properties:
       key_name: { get_param: keypair_name }
-      image: 9d9140a8-9dbf-4027-89b2-59205b02d383
-      flavor: n1.cw.standard-2
+      image: ae3082cb-fac1-46b1-97aa-507aaa8f184f
+      flavor: { get_param: flavor_name }
       networks:
         - { network: { get_resource: dmz } }
       security_groups:
