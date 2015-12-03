@@ -92,3 +92,8 @@ resources:
     properties:
       floating_ip: { get_resource: ip }
       server_id: { get_resource: server }
+
+outputs:
+  floating_ip:
+    description: IP address of the deployed compute instance
+    value: { get_attr: [ip, floating_ip_address] }

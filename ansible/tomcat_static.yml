@@ -3,7 +3,7 @@
   sudo: yes
 
   vars:
-    # apache_static:
+    # tomcat_static:
     #   git_url: https://github.com/aurelienmaury/cw-bundle-lamp.git
 
   roles:

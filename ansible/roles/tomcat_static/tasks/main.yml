@@ -21,7 +21,7 @@
 - name: tomcat running
   service:
     name=tomcat7
-    state=running
+    state=started
     enabled=yes
 
 - name: enable http proxy
@@ -30,7 +30,7 @@
 - name: apache running
   service:
     name=apache2
-    state=running
+    state=started
     enabled=yes
 
 - name: apache site configuration
